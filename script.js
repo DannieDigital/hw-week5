@@ -17,6 +17,7 @@ $(window).on("load", function (){
     $('textarea').each(function(){
         var scheduleText = localStorage.getItem(scheduleText, value);
         if (scheduleText !== null) $('#textarea').val("scheduleText");
+        return textarea;
     })
 })
 
@@ -33,7 +34,7 @@ $('#saveTextBtn').on('click' , function(){
        
 });
 });
-});
+
 
 
 
