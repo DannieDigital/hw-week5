@@ -4,6 +4,9 @@ body {
   line-height: 1;
 }
 
+#dailyScheduleLabel {
+  text-align: center;
+}
 
 textarea{
   background: transparent;
