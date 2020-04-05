@@ -5,6 +5,8 @@ $(window).on("load", function () {
     currentTime = moment().format("H");
 
 })
+// set global variables 
 
+// fuction to store input to local storage 
 // fuction to excute timeblock color coded to indicate whether it is in the past, present, or future
 
