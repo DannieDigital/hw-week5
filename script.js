@@ -10,21 +10,20 @@ var scheduleInput = document.querySelector("#textarea");
 var saveButton = document.querySelector("#saveText");
 var scheduleForm = document.querySelector("schedule-form");
 
-
-// fuction to retain input from local storage
-$(window).on("load", function (){
-    event.preventDefault();
-    $('textarea').each(function(){
-        var scheduleText = localStorage.getItem(scheduleText, value);
-        if (scheduleText !== null) $('#textarea').val("scheduleText");
-        return textarea;
-    })
-})
+var savedSchedule = [];
+// function to retain input from local storage when page is refresh
+$(document).ready(function(){
+    var scheduleInput = document.querySelector("#textarea");
+    var id = $(this).parent().attr('id');
+    localStorage.getItem(id, scheduleInput);
+    $('input[type="text"]').val(localStorage.getItem("textarea"));
+     
+});
 
   
 // fuction to store input to local storage 
 
-$('#saveTextBtn').on('click' , function(){
+$('.saveBtn').on('click' , function(){
     event.preventDefault();
     $('input[type="text"]').each(function(){
         var id = $(this).attr('id');
