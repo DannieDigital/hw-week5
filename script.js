@@ -1,43 +1,49 @@
-// fuction to excute current day that displays at the top of the calendar for user
-$(window).on("load", function () {
-    currentDate = moment().format("dddd MMM Do YYYY, h:mm a");
-    $("#currentDay").append(currentDate);
-    currentTime = moment().format("H");
-
-})
-// set global variables 
-var scheduleInput = document.querySelector("#textarea");
-var saveButton = document.querySelector("#saveText");
-var scheduleForm = document.querySelector("schedule-form");
-
-var savedSchedule = [];
-// function to retain input from local storage when page is refresh
 $(document).ready(function(){
-    var scheduleInput = document.querySelector("#textarea");
-    var id = $(this).parent().attr('id');
-    localStorage.getItem(id, scheduleInput);
-    $('input[type="text"]').val(localStorage.getItem("textarea"));
-     
-});
-
-  
-// fuction to store input to local storage 
-
-$('.saveBtn').on('click' , function(){
-    event.preventDefault();
-    $('input[type="text"]').each(function(){
-        var id = $(this).attr('id');
-        var value = $(this).val();
-       localStorage.setItem(id, value);
-       return textarea;
-       
-});
-});
-
-
-
-
-//    add footer to html with my icon like porfifio 
-
-// fuction to excute timeblock color coded to indicate whether it is in the past, present, or future
-
+    $(".saveBtn").on("click", function(){
+        //create to variables that captures the id of the input for the decription 
+        //the other variable should grab the id for the parent attritubte. 
+    var scheduleDescription = $(this).siblings(".description").val();
+    var scheduleTime = $(this).parent().attr("id");
+    localStorage.setItem(scheduleDescription, scheduleTime);
+    
+    });
+    
+    function updateTime() {
+        var currentTime = moment().hours();
+        $(".time-block").each(function(){
+            var timeBlock = parseInt($(this).attr("id").split("-")[1]);
+    
+            if (timeBlock < currentTime){
+                $(this).addClass("past");
+           
+            }
+            else if (timeBlock === currentTime){
+                 $(this).removeClass("past");
+                // $(this).removeClass("future");
+                 $(this).addClass("present");
+    
+            }
+             else {
+               $(this).removeClass("'past");
+               $(this).removeClass("present");
+               $(this).addClass("future");
+             }
+        });
+    
+    }
+    updateTime();
+    
+    // var timeIntervals = setInterval(updateTime, 15000);
+    
+    $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+    $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+    $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+    $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+    $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+    $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+    $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+    $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+    $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+    
+    
+    $("#currentDay").text(moment().format("dddd, MMM Do YYYY, h:mm a"))
